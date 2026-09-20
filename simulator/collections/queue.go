@@ -4,6 +4,7 @@ type queueNode[T any] struct {
 	value interface{}
 	next  *queueNode[T]
 }
+
 type Queue[T any] struct {
 	head *queueNode[T]
 	tail *queueNode[T]
@@ -15,6 +16,7 @@ func NewQueue[T any]() *Queue[T] {
 		size: 0,
 	}
 }
+
 func (q *Queue[T]) Enqueue(v T) {
 	node := &queueNode[T]{value: v}
 	if q.head == nil {
@@ -33,6 +35,7 @@ func (q *Queue[T]) Front() T {
 	}
 	return q.head.value
 }
+
 func (q *Queue[T]) Dequeue() {
 	if q.IsEmpty() {
 		panic("queue is empty")
