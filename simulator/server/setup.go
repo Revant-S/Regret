@@ -1,0 +1,19 @@
+package server
+
+import (
+	"Regret/simulator/server/controllers"
+	"Regret/simulator/server/routes"
+	"Regret/simulator/server/service"
+	"github.com/labstack/echo/v5"
+)
+
+func setUpCarrier(e *echo.Echo) {
+	svc := service.NewCarrierService()
+	control := controllers.NewCarrierController(svc)
+	rtr := routes.NewCarrierRouter(control)
+	rtr.RegisterControllerRouters(e)
+}
+
+func SetUp(e *echo.Echo) {
+	setUpCarrier(e)
+}
