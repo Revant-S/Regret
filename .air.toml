@@ -1,0 +1,35 @@
+root = "."
+tmp_dir = "tmp"
+
+[build]
+  # -buildvcs=false skips git stamping, making the compiler slightly faster
+  cmd = "go build -buildvcs=false -o ./tmp/main ."
+  bin = "./tmp/main"
+  
+  # Only watch actual code files
+  include_ext = ["go", "tpl", "tmpl", "html"]
+  exclude_regex = ["_test.go"]
+  exclude_dir = ["assets", "tmp", "vendor", "testdata", ".git"]
+  
+  # SPEED OPTIMIZATIONS
+  delay = 0                     # Zero wait time after saving
+  exclude_unchanged = true      # Ignore saves if the code didn't actually change
+  poll = false                  # Native OS file watching is much faster than polling
+  
+  # GRACEFUL RESTART (Prevents "Port already in use" slowness)
+  send_interrupt = true         # Sends a gentle kill signal so Echo can free the port
+  kill_delay = "500ms"          # Gives the port half a second to release before restarting
+  stop_on_error = true          # Don't try to run a broken build
+
+[color]
+  build = "yellow"
+  main = "magenta"
+  runner = "green"
+  watcher = "cyan"
+
+[log]
+  time = true
+  main_only = false
+
+[misc]
+  clean_on_exit = true          # Cleans up the /tmp binary when you stop Air
