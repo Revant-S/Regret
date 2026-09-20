@@ -8,7 +8,11 @@ const (
 )
 
 type Message struct {
-	Id      *string
-	Text    *string
+	Id      string
+	Text    string
 	OutCome MessageResult
+}
+
+func (m *Message) Verify() bool {
+	return m != nil && m.Id != ""
 }
