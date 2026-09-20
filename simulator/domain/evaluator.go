@@ -1,4 +1,4 @@
-package impl
+package domain
 
 // Evaluator owns the pool
 type Evaluator struct {

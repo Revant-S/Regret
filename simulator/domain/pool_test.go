@@ -1,4 +1,4 @@
-package impl
+package domain
 
 import (
 	"github.com/google/go-cmp/cmp"

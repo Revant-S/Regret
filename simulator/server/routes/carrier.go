@@ -24,5 +24,5 @@ func (cr *CarrierRouter) RegisterControllerRouters(e *echo.Echo) {
 	controller := cr.carrierController
 	carrier.GET("/all", controller.GetAllCarriersHandler)
 	carrier.GET("/all/available", controller.GetAvailableCarriersHandler)
-	carrier.GET("/?Id", controller.GetCarrierDetailHandler)
+	carrier.GET("/:Id", controller.GetCarrierDetailHandler)
 }
