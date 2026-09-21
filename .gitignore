@@ -9,3 +9,6 @@ go.work
 *.exe
 *.test
 *.prof
+
+sim_storage
+policy_store

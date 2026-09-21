@@ -4,10 +4,12 @@ import (
 	"Regret/domain"
 	"Regret/simulator/simdomain"
 	"errors"
+	"gorm.io/gorm"
 	"slices"
 )
 
 type CarrierRepository struct {
+	DB *gorm.DB
 }
 
 func (cr *CarrierRepository) GetAll() ([]simdomain.Carrier, error) {
@@ -41,6 +43,8 @@ type CarrierRepositoryInterface interface {
 	GetDetails(Id string) (*simdomain.Carrier, error)
 }
 
-func NewCarrierRepository() CarrierRepositoryInterface {
-	return &CarrierRepository{}
+func NewCarrierRepository(DB *gorm.DB) CarrierRepositoryInterface {
+	return &CarrierRepository{
+		DB: DB,
+	}
 }

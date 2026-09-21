@@ -24,10 +24,8 @@ func SimulatorServer(port string) {
 	e.GET("/health", func(c *echo.Context) error {
 		return c.JSON(http.StatusOK, map[string]string{"message": "server healthy"})
 	})
-
 	if err := e.Start(port); err != nil {
 		e.Logger.Error("failed to start simulator server")
 	}
 	e.Logger.Info("Simulator server started successfully")
-
 }
