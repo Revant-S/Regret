@@ -11,4 +11,4 @@ go.work
 *.test
 *.prof
 
-/simulator/tmp
+simulator/tmp
