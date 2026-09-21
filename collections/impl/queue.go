@@ -1,7 +1,7 @@
-package collections
+package impl
 
 type queueNode[T any] struct {
-	value interface{}
+	value T
 	next  *queueNode[T]
 }
 

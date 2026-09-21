@@ -1,4 +1,4 @@
-package collections
+package impl
 
 type stackNode[T any] struct {
 	value T
@@ -23,6 +23,7 @@ func (st *Stack[T]) Push(val T) {
 	node := &stackNode[T]{value: val}
 	if st.IsEmpty() {
 		st.head = node
+		st.top = node
 	} else {
 		node.prev = st.top
 		st.top = node

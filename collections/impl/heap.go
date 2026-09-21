@@ -1,4 +1,4 @@
-package collections
+package impl
 
 type HeapType int
 
