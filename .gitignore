@@ -1,0 +1,12 @@
+# Air generated binaries and local tmp folders
+tmp/
+
+# Environment variables (Critical to prevent leaking secrets)
+.env
+
+# Standard Go ignores
+vendor/
+go.work
+*.exe
+*.test
+*.prof
