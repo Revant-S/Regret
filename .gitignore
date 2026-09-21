@@ -10,3 +10,5 @@ go.work
 *.exe
 *.test
 *.prof
+
+/simulator/tmp
