@@ -1,0 +1,28 @@
+root = "."
+tmp_dir = "tmp"
+
+[build]
+  # Target the sim folder, output to a specific sim binary
+  cmd = "go build -buildvcs=false -o ./tmp/sim-bin ./cmd/sim"
+  bin = "./tmp/sim-bin"
+
+  include_ext = ["go", "tpl", "tmpl", "html"]
+  exclude_regex = ["_test.go"]
+  exclude_dir = ["assets", "tmp", "vendor", "testdata", ".git"]
+
+  delay = 0
+  exclude_unchanged = true
+  poll = false
+
+  send_interrupt = true
+  kill_delay = "500ms"
+  stop_on_error = true
+
+[color]
+  main = "magenta"
+  watcher = "cyan"
+  build = "yellow"
+  runner = "green"
+
+[misc]
+  clean_on_exit = true

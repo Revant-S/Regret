@@ -1,4 +1,4 @@
-package server
+package rest
 
 import (
 	"github.com/labstack/echo/v5"
@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-func SimulatorServer(port string) {
+func MainServer(port string) {
 	e := echo.New()
 	prettyHandler := tint.NewTextHandler(os.Stdout, &tint.Options{
 		Level:      slog.LevelInfo,
@@ -20,7 +20,6 @@ func SimulatorServer(port string) {
 	e.Use(middleware.RequestLogger())
 	e.Use(middleware.Recover())
 
-	SetUp(e)
 	e.GET("/health", func(c *echo.Context) error {
 		return c.JSON(http.StatusOK, map[string]string{"message": "server healthy"})
 	})

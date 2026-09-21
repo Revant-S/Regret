@@ -7,7 +7,6 @@ type Evaluator struct {
 }
 
 type EvaluatorInterface interface {
-	// EvaluateMessageScore returns a score for the message based on the carrier
-	//chosen and pulls the message out of the pool
 	EvaluateMessageScore(messageId *string, carrier *CarrierResponse) float64
+	EvaluateTotalScore() float64
 }
