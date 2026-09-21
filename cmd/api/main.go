@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Regret/src/rest"
+	"Regret/src/api"
 	"github.com/joho/godotenv"
 	"log"
 	"os"
@@ -18,5 +18,5 @@ func main() {
 	if port == "" {
 		port = ":8081"
 	}
-	rest.MainServer(port)
+	api.MainServer(port)
 }

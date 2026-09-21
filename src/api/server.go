@@ -1,4 +1,4 @@
-package rest
+package api
 
 import (
 	"github.com/labstack/echo/v5"
@@ -19,11 +19,10 @@ func MainServer(port string) {
 	e.Logger = slog.New(prettyHandler)
 	e.Use(middleware.RequestLogger())
 	e.Use(middleware.Recover())
-
+	SetUp(e)
 	e.GET("/health", func(c *echo.Context) error {
 		return c.JSON(http.StatusOK, map[string]string{"message": "server healthy"})
 	})
-
 	if err := e.Start(port); err != nil {
 		e.Logger.Error("failed to start simulator server")
 	}

@@ -10,7 +10,7 @@ type CarrierRouter struct {
 }
 
 type CarrierRouterInterface interface {
-	RegisterControllerRouters(e *echo.Echo)
+	RegisterCarrierRoutes(e *echo.Echo)
 }
 
 func NewCarrierRouter(controller controllers.CarrierControllerInterface) CarrierRouterInterface {
@@ -19,7 +19,7 @@ func NewCarrierRouter(controller controllers.CarrierControllerInterface) Carrier
 	}
 }
 
-func (cr *CarrierRouter) RegisterControllerRouters(e *echo.Echo) {
+func (cr *CarrierRouter) RegisterCarrierRoutes(e *echo.Echo) {
 	carrier := e.Group("/carrier")
 	controller := cr.carrierController
 	carrier.GET("/all", controller.GetAllCarriersHandler)

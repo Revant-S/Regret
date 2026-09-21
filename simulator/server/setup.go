@@ -13,7 +13,7 @@ func setUpCarrier(e *echo.Echo) {
 	svc := service.NewCarrierService(repo)
 	control := controllers.NewCarrierController(svc)
 	rtr := routes.NewCarrierRouter(control)
-	rtr.RegisterControllerRouters(e)
+	rtr.RegisterCarrierRoutes(e)
 }
 
 func SetUp(e *echo.Echo) {
