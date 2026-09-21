@@ -1,4 +1,4 @@
-package collections
+package std
 
 type Stack[T any] interface {
 	IsEmpty() bool

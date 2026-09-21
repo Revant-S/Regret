@@ -1,4 +1,4 @@
-package collections
+package std
 
 type Queue[T any] interface {
 	Enqueue(v T)
