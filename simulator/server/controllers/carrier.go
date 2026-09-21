@@ -25,7 +25,7 @@ func (cc *CarrierController) GetCarrierDetailHandler(c *echo.Context) error {
 	if Id == "" {
 		return c.JSON(http.StatusBadRequest, simdomain.CarrierResponse{
 			Carrier: domain.Carrier{
-				Id:     "",
+				Name:   "",
 				Cost:   0.0,
 				Status: domain.CarrierInvalid,
 			},

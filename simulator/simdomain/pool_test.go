@@ -60,7 +60,7 @@ func TestPool_ValidationErrors(t *testing.T) {
 	t.Run("Push missing ID: ", func(t *testing.T) {
 		msg := &domain.Message{Id: ""}
 		if err := pool.Push(msg); err == nil {
-			t.Fatalf("expected error on pushing empty Id, but got nil")
+			t.Fatalf("expected error on pushing empty Name, but got nil")
 		}
 	})
 
@@ -78,7 +78,7 @@ func TestPool_Clear(t *testing.T) {
 		Text:    "This is a Test Message for Pop",
 		OutCome: domain.MessageResultSuccess,
 	}
-	err := pool.Push(message)
+	err := pool.Push(domain.message)
 	if err != nil {
 		t.Fatalf("expected no error on push got : %v", err)
 	}

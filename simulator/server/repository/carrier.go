@@ -29,7 +29,7 @@ func (cr *CarrierRepository) GetAvailable() ([]simdomain.Carrier, error) {
 func (cr *CarrierRepository) GetDetails(Id string) (*simdomain.Carrier, error) {
 
 	carrierIdx := slices.IndexFunc(DummyCarriers, func(carrier simdomain.Carrier) bool {
-		return carrier.Id == Id
+		return carrier.Name == Id
 	})
 	if carrierIdx == -1 {
 		return nil, errors.New("carrier not found")

@@ -9,7 +9,7 @@ const (
 )
 
 type Carrier struct {
-	Id     string        `json:"Id"`
+	Name   string        `json:"Name"`
 	Cost   float64       `json:"Cost"`
 	Status CarrierStatus `json:"Status"`
 }

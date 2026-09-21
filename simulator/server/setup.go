@@ -37,5 +37,6 @@ func setUpCarrier(e *echo.Echo, DB *gorm.DB) {
 func SetUp(e *echo.Echo) {
 	db := SetUpDB()
 	setUpCarrier(e, db)
+	SeedDB(db)
 
 }

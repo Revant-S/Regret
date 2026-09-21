@@ -8,7 +8,7 @@ import (
 var DummyCarriers = []simdomain.Carrier{
 	{
 		Carrier: domain.Carrier{
-			Id:     "CARRIER-PREMIUM-1",
+			Name:   "CARRIER-PREMIUM-1",
 			Cost:   300,
 			Status: domain.CarrierAvailable,
 		},
@@ -16,7 +16,7 @@ var DummyCarriers = []simdomain.Carrier{
 	},
 	{
 		Carrier: domain.Carrier{
-			Id:     "CARRIER-PREMIUM-2",
+			Name:   "CARRIER-PREMIUM-2",
 			Cost:   220,
 			Status: domain.CarrierAvailable,
 		},
@@ -24,7 +24,7 @@ var DummyCarriers = []simdomain.Carrier{
 	},
 	{
 		Carrier: domain.Carrier{
-			Id:     "CARRIER-STANDARD-1",
+			Name:   "CARRIER-STANDARD-1",
 			Cost:   150,
 			Status: domain.CarrierAvailable,
 		},
@@ -32,7 +32,7 @@ var DummyCarriers = []simdomain.Carrier{
 	},
 	{
 		Carrier: domain.Carrier{
-			Id:     "CARRIER-STANDARD-2",
+			Name:   "CARRIER-STANDARD-2",
 			Cost:   120,
 			Status: domain.CarrierAvailable,
 		},
@@ -40,7 +40,7 @@ var DummyCarriers = []simdomain.Carrier{
 	},
 	{
 		Carrier: domain.Carrier{
-			Id:     "CARRIER-STANDARD-3",
+			Name:   "CARRIER-STANDARD-3",
 			Cost:   95,
 			Status: domain.CarrierAvailable,
 		},
@@ -48,7 +48,7 @@ var DummyCarriers = []simdomain.Carrier{
 	},
 	{
 		Carrier: domain.Carrier{
-			Id:     "CARRIER-ECONOMY-1",
+			Name:   "CARRIER-ECONOMY-1",
 			Cost:   60,
 			Status: domain.CarrierAvailable,
 		},
@@ -56,7 +56,7 @@ var DummyCarriers = []simdomain.Carrier{
 	},
 	{
 		Carrier: domain.Carrier{
-			Id:     "CARRIER-ECONOMY-2",
+			Name:   "CARRIER-ECONOMY-2",
 			Cost:   40,
 			Status: domain.CarrierAvailable,
 		},
@@ -64,7 +64,7 @@ var DummyCarriers = []simdomain.Carrier{
 	},
 	{
 		Carrier: domain.Carrier{
-			Id:     "CARRIER-GAMBLE-1",
+			Name:   "CARRIER-GAMBLE-1",
 			Cost:   15,
 			Status: domain.CarrierAvailable,
 		},
@@ -72,7 +72,7 @@ var DummyCarriers = []simdomain.Carrier{
 	},
 	{
 		Carrier: domain.Carrier{
-			Id:     "CARRIER-GAMBLE-2",
+			Name:   "CARRIER-GAMBLE-2",
 			Cost:   5,
 			Status: domain.CarrierAvailable,
 		},
@@ -80,7 +80,7 @@ var DummyCarriers = []simdomain.Carrier{
 	},
 	{
 		Carrier: domain.Carrier{
-			Id:     "CARRIER-OFFLINE",
+			Name:   "CARRIER-OFFLINE",
 			Cost:   100,
 			Status: domain.CarrierUnAvailable,
 		},

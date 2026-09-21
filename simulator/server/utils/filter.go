@@ -8,7 +8,7 @@ import (
 func FilterPerformance(carrier *simdomain.Carrier) *simdomain.CarrierResponse {
 	return &simdomain.CarrierResponse{
 		Carrier: domain.Carrier{
-			Id:     carrier.Id,
+			Name:   carrier.Name,
 			Cost:   carrier.Cost,
 			Status: carrier.Status,
 		},
