@@ -1,9 +1,9 @@
 package service
 
 import (
-	"Regret/simulator/domain"
 	"Regret/simulator/server/repository"
 	"Regret/simulator/server/utils"
+	"Regret/simulator/simdomain"
 	"errors"
 )
 
@@ -11,7 +11,7 @@ type CarrierService struct {
 	carrierRepository repository.CarrierRepositoryInterface
 }
 
-func (c *CarrierService) GetAllCarriers() ([]domain.CarrierResponse, error) {
+func (c *CarrierService) GetAllCarriers() ([]simdomain.CarrierResponse, error) {
 	carriers, err := c.carrierRepository.GetAll()
 	if err != nil {
 		return nil, err
@@ -20,7 +20,7 @@ func (c *CarrierService) GetAllCarriers() ([]domain.CarrierResponse, error) {
 	return filteredCarriers, nil
 }
 
-func (c *CarrierService) GetCarrierDetail(Id string) (*domain.CarrierResponse, error) {
+func (c *CarrierService) GetCarrierDetail(Id string) (*simdomain.CarrierResponse, error) {
 	if Id == "" {
 		return nil, errors.New("invalid carrierId")
 	}
@@ -33,7 +33,7 @@ func (c *CarrierService) GetCarrierDetail(Id string) (*domain.CarrierResponse, e
 	return filteredCarrier, nil
 }
 
-func (c *CarrierService) GetAvailableCarriers() ([]domain.CarrierResponse, error) {
+func (c *CarrierService) GetAvailableCarriers() ([]simdomain.CarrierResponse, error) {
 	availCarriers, err := c.carrierRepository.GetAvailable()
 	if err != nil {
 		return nil, err
@@ -42,9 +42,9 @@ func (c *CarrierService) GetAvailableCarriers() ([]domain.CarrierResponse, error
 }
 
 type CarrierServiceInterface interface {
-	GetAllCarriers() ([]domain.CarrierResponse, error)
-	GetCarrierDetail(Id string) (*domain.CarrierResponse, error)
-	GetAvailableCarriers() ([]domain.CarrierResponse, error)
+	GetAllCarriers() ([]simdomain.CarrierResponse, error)
+	GetCarrierDetail(Id string) (*simdomain.CarrierResponse, error)
+	GetAvailableCarriers() ([]simdomain.CarrierResponse, error)
 }
 
 func NewCarrierService(carrierRepo repository.CarrierRepositoryInterface) CarrierServiceInterface {

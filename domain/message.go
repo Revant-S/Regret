@@ -12,7 +12,3 @@ type Message struct {
 	Text    string
 	OutCome MessageResult
 }
-
-func (m *Message) Verify() bool {
-	return m != nil && m.Id != ""
-}

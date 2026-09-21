@@ -1,7 +1,8 @@
 package repository
 
 import (
-	"Regret/simulator/domain"
+	"Regret/domain"
+	"Regret/simulator/simdomain"
 	"errors"
 	"slices"
 )
@@ -9,12 +10,12 @@ import (
 type CarrierRepository struct {
 }
 
-func (cr *CarrierRepository) GetAll() ([]domain.Carrier, error) {
+func (cr *CarrierRepository) GetAll() ([]simdomain.Carrier, error) {
 	return DummyCarriers, nil
 }
 
-func (cr *CarrierRepository) GetAvailable() ([]domain.Carrier, error) {
-	var active []domain.Carrier
+func (cr *CarrierRepository) GetAvailable() ([]simdomain.Carrier, error) {
+	var active []simdomain.Carrier
 	for _, carrier := range DummyCarriers {
 		if carrier.Status == domain.CarrierAvailable {
 			active = append(active, carrier)
@@ -23,9 +24,9 @@ func (cr *CarrierRepository) GetAvailable() ([]domain.Carrier, error) {
 	return active, nil
 }
 
-func (cr *CarrierRepository) GetDetails(Id string) (*domain.Carrier, error) {
+func (cr *CarrierRepository) GetDetails(Id string) (*simdomain.Carrier, error) {
 
-	carrierIdx := slices.IndexFunc(DummyCarriers, func(carrier domain.Carrier) bool {
+	carrierIdx := slices.IndexFunc(DummyCarriers, func(carrier simdomain.Carrier) bool {
 		return carrier.Id == Id
 	})
 	if carrierIdx == -1 {
@@ -35,9 +36,9 @@ func (cr *CarrierRepository) GetDetails(Id string) (*domain.Carrier, error) {
 }
 
 type CarrierRepositoryInterface interface {
-	GetAll() ([]domain.Carrier, error)
-	GetAvailable() ([]domain.Carrier, error)
-	GetDetails(Id string) (*domain.Carrier, error)
+	GetAll() ([]simdomain.Carrier, error)
+	GetAvailable() ([]simdomain.Carrier, error)
+	GetDetails(Id string) (*simdomain.Carrier, error)
 }
 
 func NewCarrierRepository() CarrierRepositoryInterface {

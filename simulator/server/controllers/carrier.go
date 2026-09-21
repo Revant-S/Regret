@@ -1,8 +1,9 @@
 package controllers
 
 import (
-	"Regret/simulator/domain"
+	"Regret/domain"
 	"Regret/simulator/server/service"
+	"Regret/simulator/simdomain"
 	"github.com/labstack/echo/v5"
 	"net/http"
 )
@@ -22,16 +23,18 @@ func (cc *CarrierController) GetAllCarriersHandler(c *echo.Context) error {
 func (cc *CarrierController) GetCarrierDetailHandler(c *echo.Context) error {
 	Id := c.Param("Id")
 	if Id == "" {
-		return c.JSON(http.StatusBadRequest, domain.CarrierResponse{
-			Id:     "",
-			Cost:   0.0,
-			Status: domain.CarrierInvalid,
+		return c.JSON(http.StatusBadRequest, simdomain.CarrierResponse{
+			Carrier: domain.Carrier{
+				Id:     "",
+				Cost:   0.0,
+				Status: domain.CarrierInvalid,
+			},
 		})
 	}
 
 	carrier, err := cc.carrierService.GetCarrierDetail(Id)
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, domain.CarrierResponse{})
+		return c.JSON(http.StatusInternalServerError, simdomain.CarrierResponse{})
 	}
 	return c.JSON(http.StatusOK, carrier)
 }

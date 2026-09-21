@@ -1,17 +1,22 @@
 package utils
 
-import "Regret/simulator/domain"
+import (
+	"Regret/domain"
+	"Regret/simulator/simdomain"
+)
 
-func FilterPerformance(carrier *domain.Carrier) *domain.CarrierResponse {
-	return &domain.CarrierResponse{
-		Id:     carrier.Id,
-		Cost:   carrier.Cost,
-		Status: carrier.Status,
+func FilterPerformance(carrier *simdomain.Carrier) *simdomain.CarrierResponse {
+	return &simdomain.CarrierResponse{
+		Carrier: domain.Carrier{
+			Id:     carrier.Id,
+			Cost:   carrier.Cost,
+			Status: carrier.Status,
+		},
 	}
 }
 
-func FilterPerformanceFromList(carriers []domain.Carrier) []domain.CarrierResponse {
-	var filteredResponse []domain.CarrierResponse
+func FilterPerformanceFromList(carriers []simdomain.Carrier) []simdomain.CarrierResponse {
+	var filteredResponse []simdomain.CarrierResponse
 	for _, carrier := range carriers {
 		filteredCarrier := FilterPerformance(&carrier)
 		filteredResponse = append(filteredResponse, *filteredCarrier)

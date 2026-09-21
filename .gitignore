@@ -1,7 +1,6 @@
-# Air generated binaries and local tmp folders
 tmp/
+simulator/tmp
 
-# Environment variables (Critical to prevent leaking secrets)
 .env
 
 # Standard Go ignores
@@ -10,5 +9,3 @@ go.work
 *.exe
 *.test
 *.prof
-
-simulator/tmp

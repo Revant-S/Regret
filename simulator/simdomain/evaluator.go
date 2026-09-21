@@ -1,4 +1,4 @@
-package domain
+package simdomain
 
 // Evaluator owns the pool
 type Evaluator struct {

@@ -1,6 +1,7 @@
-package domain
+package simdomain
 
 import (
+	"Regret/domain"
 	"github.com/google/go-cmp/cmp"
 	"testing"
 )
@@ -8,10 +9,10 @@ import (
 func TestPool_PushAndGet(t *testing.T) {
 
 	pool := NewPool()
-	message := &Message{
+	message := &domain.Message{
 		Id:      "msg123",
 		Text:    "This is a Test Message",
-		OutCome: MessageResultFailure,
+		OutCome: domain.MessageResultFailure,
 	}
 	err := pool.Push(message)
 	if err != nil {
@@ -34,10 +35,10 @@ func TestPool_PushAndGet(t *testing.T) {
 
 func TestPool_Pop(t *testing.T) {
 	pool := NewPool()
-	message := &Message{
+	message := &domain.Message{
 		Id:      "msg123",
 		Text:    "This is a Test Message for Pop",
-		OutCome: MessageResultSuccess,
+		OutCome: domain.MessageResultSuccess,
 	}
 	err := pool.Push(message)
 	if err != nil {
@@ -57,7 +58,7 @@ func TestPool_Pop(t *testing.T) {
 func TestPool_ValidationErrors(t *testing.T) {
 	pool := NewPool()
 	t.Run("Push missing ID: ", func(t *testing.T) {
-		msg := &Message{Id: ""}
+		msg := &domain.Message{Id: ""}
 		if err := pool.Push(msg); err == nil {
 			t.Fatalf("expected error on pushing empty Id, but got nil")
 		}
@@ -72,10 +73,10 @@ func TestPool_ValidationErrors(t *testing.T) {
 
 func TestPool_Clear(t *testing.T) {
 	pool := NewPool()
-	message := &Message{
+	message := &domain.Message{
 		Id:      "msg123",
 		Text:    "This is a Test Message for Pop",
-		OutCome: MessageResultSuccess,
+		OutCome: domain.MessageResultSuccess,
 	}
 	err := pool.Push(message)
 	if err != nil {

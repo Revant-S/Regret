@@ -1,66 +1,89 @@
 package repository
 
-import "Regret/simulator/domain"
+import (
+	"Regret/domain"
+	"Regret/simulator/simdomain"
+)
 
-var DummyCarriers []domain.Carrier = []domain.Carrier{
+var DummyCarriers = []simdomain.Carrier{
 	{
-		Id:          "CARRIER-PREMIUM-1",
-		Cost:        300,
+		Carrier: domain.Carrier{
+			Id:     "CARRIER-PREMIUM-1",
+			Cost:   300,
+			Status: domain.CarrierAvailable,
+		},
 		Reliability: 0.99,
-		Status:      domain.CarrierAvailable,
 	},
 	{
-		Id:          "CARRIER-PREMIUM-2",
-		Cost:        220,
+		Carrier: domain.Carrier{
+			Id:     "CARRIER-PREMIUM-2",
+			Cost:   220,
+			Status: domain.CarrierAvailable,
+		},
 		Reliability: 0.96,
-		Status:      domain.CarrierAvailable,
 	},
 	{
-		Id:          "CARRIER-STANDARD-1",
-		Cost:        150,
+		Carrier: domain.Carrier{
+			Id:     "CARRIER-STANDARD-1",
+			Cost:   150,
+			Status: domain.CarrierAvailable,
+		},
 		Reliability: 0.90,
-		Status:      domain.CarrierAvailable,
 	},
 	{
-		Id:          "CARRIER-STANDARD-2",
-		Cost:        120,
+		Carrier: domain.Carrier{
+			Id:     "CARRIER-STANDARD-2",
+			Cost:   120,
+			Status: domain.CarrierAvailable,
+		},
 		Reliability: 0.85,
-		Status:      domain.CarrierAvailable,
 	},
 	{
-		Id:          "CARRIER-STANDARD-3",
-		Cost:        95,
+		Carrier: domain.Carrier{
+			Id:     "CARRIER-STANDARD-3",
+			Cost:   95,
+			Status: domain.CarrierAvailable,
+		},
 		Reliability: 0.80,
-		Status:      domain.CarrierAvailable,
 	},
 	{
-		Id:          "CARRIER-ECONOMY-1",
-		Cost:        60,
+		Carrier: domain.Carrier{
+			Id:     "CARRIER-ECONOMY-1",
+			Cost:   60,
+			Status: domain.CarrierAvailable,
+		},
 		Reliability: 0.70,
-		Status:      domain.CarrierAvailable,
 	},
 	{
-		Id:          "CARRIER-ECONOMY-2",
-		Cost:        40,
+		Carrier: domain.Carrier{
+			Id:     "CARRIER-ECONOMY-2",
+			Cost:   40,
+			Status: domain.CarrierAvailable,
+		},
 		Reliability: 0.55,
-		Status:      domain.CarrierAvailable,
 	},
 	{
-		Id:          "CARRIER-GAMBLE-1",
-		Cost:        15,
+		Carrier: domain.Carrier{
+			Id:     "CARRIER-GAMBLE-1",
+			Cost:   15,
+			Status: domain.CarrierAvailable,
+		},
 		Reliability: 0.30,
-		Status:      domain.CarrierAvailable,
 	},
 	{
-		Id:          "CARRIER-GAMBLE-2",
-		Cost:        5,
+		Carrier: domain.Carrier{
+			Id:     "CARRIER-GAMBLE-2",
+			Cost:   5,
+			Status: domain.CarrierAvailable,
+		},
 		Reliability: 0.10,
-		Status:      domain.CarrierAvailable,
 	},
 	{
-		Id:          "CARRIER-OFFLINE",
-		Cost:        100,
+		Carrier: domain.Carrier{
+			Id:     "CARRIER-OFFLINE",
+			Cost:   100,
+			Status: domain.CarrierUnAvailable,
+		},
 		Reliability: 0.88,
-		Status:      domain.CarrierUnAvailable,
 	},
 }
