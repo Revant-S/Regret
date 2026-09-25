@@ -14,7 +14,7 @@ func MainServer(port string) {
 	e := echo.New()
 	prettyHandler := tint.NewTextHandler(os.Stdout, &tint.Options{
 		Level:      slog.LevelInfo,
-		TimeFormat: time.TimeOnly,
+		TimeFormat: time.DateTime,
 	})
 	e.Logger = slog.New(prettyHandler)
 	e.Use(middleware.RequestLogger())
