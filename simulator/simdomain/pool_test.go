@@ -9,10 +9,12 @@ import (
 func TestPool_PushAndGet(t *testing.T) {
 
 	pool := NewPool()
-	message := &domain.Message{
-		Id:      "msg123",
-		Text:    "This is a Test Message",
-		OutCome: domain.MessageResultFailure,
+	message := &Message{
+		Message: domain.Message{
+			Id:      "msg123",
+			Text:    "This is a Test Message",
+			OutCome: domain.MessageResultFailure,
+		},
 	}
 	err := pool.Push(message)
 	if err != nil {
@@ -35,10 +37,12 @@ func TestPool_PushAndGet(t *testing.T) {
 
 func TestPool_Pop(t *testing.T) {
 	pool := NewPool()
-	message := &domain.Message{
-		Id:      "msg123",
-		Text:    "This is a Test Message for Pop",
-		OutCome: domain.MessageResultSuccess,
+	message := &Message{
+		Message: domain.Message{
+			Id:      "msg123",
+			Text:    "This is a Test Message for Pop",
+			OutCome: domain.MessageResultSuccess,
+		},
 	}
 	err := pool.Push(message)
 	if err != nil {
@@ -58,7 +62,11 @@ func TestPool_Pop(t *testing.T) {
 func TestPool_ValidationErrors(t *testing.T) {
 	pool := NewPool()
 	t.Run("Push missing ID: ", func(t *testing.T) {
-		msg := &domain.Message{Id: ""}
+		msg := &Message{
+			Message: domain.Message{
+				Id: "",
+			},
+		}
 		if err := pool.Push(msg); err == nil {
 			t.Fatalf("expected error on pushing empty Name, but got nil")
 		}
@@ -73,12 +81,14 @@ func TestPool_ValidationErrors(t *testing.T) {
 
 func TestPool_Clear(t *testing.T) {
 	pool := NewPool()
-	message := &domain.Message{
-		Id:      "msg123",
-		Text:    "This is a Test Message for Pop",
-		OutCome: domain.MessageResultSuccess,
+	message := &Message{
+		Message: domain.Message{
+			Id:      "msg123",
+			Text:    "This is a Test Message for Pop",
+			OutCome: domain.MessageResultSuccess,
+		},
 	}
-	err := pool.Push(domain.message)
+	err := pool.Push(message)
 	if err != nil {
 		t.Fatalf("expected no error on push got : %v", err)
 	}

@@ -20,4 +20,6 @@ func NewDispatchRouter(dispatchHandler handlers.DispatchHandlerInterface) Dispat
 }
 
 func (dr *DispatchRouter) RegisterDispatchRouter(e *echo.Echo) {
+	dispatchGrp := e.Group("/carrier")
+	dispatchGrp.POST("/", dr.handler.GetChannel)
 }

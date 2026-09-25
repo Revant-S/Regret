@@ -3,7 +3,7 @@ package api
 import (
 	"Regret/src/api/handlers"
 	"Regret/src/api/managers"
-	router2 "Regret/src/api/router"
+	routers "Regret/src/api/router"
 	"Regret/src/api/schema"
 	"Regret/src/api/storage"
 	"github.com/labstack/echo/v5"
@@ -16,7 +16,7 @@ func setupDispatch(e *echo.Echo, DB *gorm.DB) {
 	store := storage.NewCarrierStorage(DB)
 	manage := managers.NewDispatchManager(store)
 	handle := handlers.NewDispatchHandler(manage)
-	router := router2.NewDispatchRouter(handle)
+	router := routers.NewDispatchRouter(handle)
 
 	router.RegisterDispatchRouter(e)
 }
