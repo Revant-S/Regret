@@ -5,12 +5,12 @@ import (
 	"sync"
 )
 
-type Pool struct {
+type pool struct {
 	unResolvedMessages map[string]*Message
 	mu                 sync.RWMutex
 }
 
-type PoolInterface interface {
+type Pool interface {
 	Push(message *Message) error
 	Pop(message *Message) error
 	GetMessageFromPool(messageId string) (*Message, error)
@@ -18,13 +18,13 @@ type PoolInterface interface {
 	Size() int
 }
 
-func NewPool() PoolInterface {
-	return &Pool{
+func NewPool() Pool {
+	return &pool{
 		unResolvedMessages: make(map[string]*Message),
 	}
 }
 
-func (p *Pool) Push(message *Message) error {
+func (p *pool) Push(message *Message) error {
 	if !message.Verify() {
 		return errors.New("invalid Message")
 	}
@@ -34,7 +34,7 @@ func (p *Pool) Push(message *Message) error {
 	return nil
 }
 
-func (p *Pool) Pop(message *Message) error {
+func (p *pool) Pop(message *Message) error {
 	if !message.Verify() {
 		return errors.New("invalid message")
 	}
@@ -44,7 +44,7 @@ func (p *Pool) Pop(message *Message) error {
 	return nil
 }
 
-func (p *Pool) GetMessageFromPool(messageId string) (*Message, error) {
+func (p *pool) GetMessageFromPool(messageId string) (*Message, error) {
 	p.mu.RLock()
 	defer p.mu.RUnlock()
 	msg, exists := p.unResolvedMessages[messageId]
@@ -54,7 +54,7 @@ func (p *Pool) GetMessageFromPool(messageId string) (*Message, error) {
 	return msg, nil
 }
 
-func (p *Pool) Clear() error {
+func (p *pool) Clear() error {
 	if p == nil {
 		return errors.New("cannot clear a nil pool")
 	}
@@ -64,6 +64,6 @@ func (p *Pool) Clear() error {
 	return nil
 }
 
-func (p *Pool) Size() int {
+func (p *pool) Size() int {
 	return len(p.unResolvedMessages)
 }

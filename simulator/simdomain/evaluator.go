@@ -1,8 +1,8 @@
 package simdomain
 
-// Evaluator owns the pool
+// Evaluator owns the pool , the http request client
 type Evaluator struct {
-	MessagePool *Pool
+	MessagePool *pool
 	Score       float64
 }
 
