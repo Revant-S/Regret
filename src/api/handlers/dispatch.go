@@ -5,20 +5,20 @@ import (
 	"github.com/labstack/echo/v5"
 )
 
-type DispatchHandler struct {
-	dispatchManager managers.DispatchManagerInterface
+type dispatchHandler struct {
+	dispatchManager managers.DispatchManager
 }
 
-type DispatchHandlerInterface interface {
+type DispatchHandler interface {
 	GetChannel(c *echo.Context) error
 }
 
-func NewDispatchHandler(manager managers.DispatchManagerInterface) DispatchHandlerInterface {
-	return &DispatchHandler{
+func NewDispatchHandler(manager managers.DispatchManager) DispatchHandler {
+	return &dispatchHandler{
 		dispatchManager: manager,
 	}
 }
 
-func (dh *DispatchHandler) GetChannel(c *echo.Context) error {
+func (dh *dispatchHandler) GetChannel(c *echo.Context) error {
 	return nil
 }

@@ -8,15 +8,15 @@ import (
 	"slices"
 )
 
-type CarrierRepository struct {
+type carrierRepository struct {
 	DB *gorm.DB
 }
 
-func (cr *CarrierRepository) GetAll() ([]simdomain.Carrier, error) {
+func (cr *carrierRepository) GetAll() ([]simdomain.Carrier, error) {
 	return DummyCarriers, nil
 }
 
-func (cr *CarrierRepository) GetAvailable() ([]simdomain.Carrier, error) {
+func (cr *carrierRepository) GetAvailable() ([]simdomain.Carrier, error) {
 	var active []simdomain.Carrier
 	for _, carrier := range DummyCarriers {
 		if carrier.Status == domain.CarrierAvailable {
@@ -26,7 +26,7 @@ func (cr *CarrierRepository) GetAvailable() ([]simdomain.Carrier, error) {
 	return active, nil
 }
 
-func (cr *CarrierRepository) GetDetails(Id string) (*simdomain.Carrier, error) {
+func (cr *carrierRepository) GetDetails(Id string) (*simdomain.Carrier, error) {
 
 	carrierIdx := slices.IndexFunc(DummyCarriers, func(carrier simdomain.Carrier) bool {
 		return carrier.Name == Id
@@ -37,14 +37,14 @@ func (cr *CarrierRepository) GetDetails(Id string) (*simdomain.Carrier, error) {
 	return &DummyCarriers[carrierIdx], nil
 }
 
-type CarrierRepositoryInterface interface {
+type CarrierRepository interface {
 	GetAll() ([]simdomain.Carrier, error)
 	GetAvailable() ([]simdomain.Carrier, error)
 	GetDetails(Id string) (*simdomain.Carrier, error)
 }
 
-func NewCarrierRepository(DB *gorm.DB) CarrierRepositoryInterface {
-	return &CarrierRepository{
+func NewCarrierRepository(DB *gorm.DB) CarrierRepository {
+	return &carrierRepository{
 		DB: DB,
 	}
 }

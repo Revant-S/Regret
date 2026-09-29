@@ -8,11 +8,11 @@ import (
 	"net/http"
 )
 
-type CarrierController struct {
-	carrierService service.CarrierServiceInterface
+type carrierController struct {
+	carrierService service.CarrierService
 }
 
-func (cc *CarrierController) GetAllCarriersHandler(c *echo.Context) error {
+func (cc *carrierController) GetAllCarriersHandler(c *echo.Context) error {
 	carriers, err := cc.carrierService.GetAllCarriers()
 	if err != nil {
 		return err
@@ -20,7 +20,7 @@ func (cc *CarrierController) GetAllCarriersHandler(c *echo.Context) error {
 	return c.JSON(http.StatusOK, carriers)
 }
 
-func (cc *CarrierController) GetCarrierDetailHandler(c *echo.Context) error {
+func (cc *carrierController) GetCarrierDetailHandler(c *echo.Context) error {
 	Id := c.Param("Id")
 	if Id == "" {
 		return c.JSON(http.StatusBadRequest, simdomain.CarrierResponse{
@@ -39,7 +39,7 @@ func (cc *CarrierController) GetCarrierDetailHandler(c *echo.Context) error {
 	return c.JSON(http.StatusOK, carrier)
 }
 
-func (cc *CarrierController) GetAvailableCarriersHandler(c *echo.Context) error {
+func (cc *carrierController) GetAvailableCarriersHandler(c *echo.Context) error {
 	carriers, err := cc.carrierService.GetAvailableCarriers()
 	if err != nil {
 		return err
@@ -47,14 +47,14 @@ func (cc *CarrierController) GetAvailableCarriersHandler(c *echo.Context) error 
 	return c.JSON(http.StatusOK, carriers)
 }
 
-type CarrierControllerInterface interface {
+type CarrierController interface {
 	GetAllCarriersHandler(c *echo.Context) error
 	GetCarrierDetailHandler(c *echo.Context) error
 	GetAvailableCarriersHandler(c *echo.Context) error
 }
 
-func NewCarrierController(carrierServiceInterface service.CarrierServiceInterface) CarrierControllerInterface {
-	return &CarrierController{
+func NewCarrierController(carrierServiceInterface service.CarrierService) CarrierController {
+	return &carrierController{
 		carrierService: carrierServiceInterface,
 	}
 }

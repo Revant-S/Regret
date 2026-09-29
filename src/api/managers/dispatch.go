@@ -5,20 +5,20 @@ import (
 	"Regret/src/api/storage"
 )
 
-type DispatchManager struct {
+type dispatchManager struct {
 	carrierStore storage.CarrierStorageInterface
 }
 
-type DispatchManagerInterface interface {
+type DispatchManager interface {
 	GetCarrier(message *domain.Message) (*storage.CarrierStorage, error)
 }
 
-func NewDispatchManager(carrierStorage storage.CarrierStorageInterface) DispatchManagerInterface {
-	return &DispatchManager{
+func NewDispatchManager(carrierStorage storage.CarrierStorageInterface) DispatchManager {
+	return &dispatchManager{
 		carrierStore: carrierStorage,
 	}
 }
 
-func (dm *DispatchManager) GetCarrier(message *domain.Message) (*storage.CarrierStorage, error) {
+func (dm *dispatchManager) GetCarrier(message *domain.Message) (*storage.CarrierStorage, error) {
 	return nil, nil
 }

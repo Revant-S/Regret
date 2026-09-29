@@ -6,14 +6,14 @@ import (
 )
 
 type DispatchRouter struct {
-	handler handlers.DispatchHandlerInterface
+	handler handlers.DispatchHandler
 }
 
 type DispatchRouterInterface interface {
 	RegisterDispatchRouter(e *echo.Echo)
 }
 
-func NewDispatchRouter(dispatchHandler handlers.DispatchHandlerInterface) DispatchRouterInterface {
+func NewDispatchRouter(dispatchHandler handlers.DispatchHandler) DispatchRouterInterface {
 	return &DispatchRouter{
 		handler: dispatchHandler,
 	}

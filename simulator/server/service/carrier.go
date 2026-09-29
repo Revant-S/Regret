@@ -7,11 +7,11 @@ import (
 	"errors"
 )
 
-type CarrierService struct {
-	carrierRepository repository.CarrierRepositoryInterface
+type carrierService struct {
+	carrierRepository repository.CarrierRepository
 }
 
-func (c *CarrierService) GetAllCarriers() ([]simdomain.CarrierResponse, error) {
+func (c *carrierService) GetAllCarriers() ([]simdomain.CarrierResponse, error) {
 	carriers, err := c.carrierRepository.GetAll()
 	if err != nil {
 		return nil, err
@@ -20,7 +20,7 @@ func (c *CarrierService) GetAllCarriers() ([]simdomain.CarrierResponse, error) {
 	return filteredCarriers, nil
 }
 
-func (c *CarrierService) GetCarrierDetail(Id string) (*simdomain.CarrierResponse, error) {
+func (c *carrierService) GetCarrierDetail(Id string) (*simdomain.CarrierResponse, error) {
 	if Id == "" {
 		return nil, errors.New("invalid carrierId")
 	}
@@ -33,7 +33,7 @@ func (c *CarrierService) GetCarrierDetail(Id string) (*simdomain.CarrierResponse
 	return filteredCarrier, nil
 }
 
-func (c *CarrierService) GetAvailableCarriers() ([]simdomain.CarrierResponse, error) {
+func (c *carrierService) GetAvailableCarriers() ([]simdomain.CarrierResponse, error) {
 	availCarriers, err := c.carrierRepository.GetAvailable()
 	if err != nil {
 		return nil, err
@@ -41,14 +41,14 @@ func (c *CarrierService) GetAvailableCarriers() ([]simdomain.CarrierResponse, er
 	return utils.FilterPerformanceFromList(availCarriers), nil
 }
 
-type CarrierServiceInterface interface {
+type CarrierService interface {
 	GetAllCarriers() ([]simdomain.CarrierResponse, error)
 	GetCarrierDetail(Id string) (*simdomain.CarrierResponse, error)
 	GetAvailableCarriers() ([]simdomain.CarrierResponse, error)
 }
 
-func NewCarrierService(carrierRepo repository.CarrierRepositoryInterface) CarrierServiceInterface {
-	return &CarrierService{
+func NewCarrierService(carrierRepo repository.CarrierRepository) CarrierService {
+	return &carrierService{
 		carrierRepository: carrierRepo,
 	}
 }

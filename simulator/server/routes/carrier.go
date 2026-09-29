@@ -5,21 +5,21 @@ import (
 	"github.com/labstack/echo/v5"
 )
 
-type CarrierRouter struct {
-	carrierController controllers.CarrierControllerInterface
+type carrierRouter struct {
+	carrierController controllers.CarrierController
 }
 
-type CarrierRouterInterface interface {
+type CarrierRouter interface {
 	RegisterCarrierRoutes(e *echo.Echo)
 }
 
-func NewCarrierRouter(controller controllers.CarrierControllerInterface) CarrierRouterInterface {
-	return &CarrierRouter{
+func NewCarrierRouter(controller controllers.CarrierController) CarrierRouter {
+	return &carrierRouter{
 		carrierController: controller,
 	}
 }
 
-func (cr *CarrierRouter) RegisterCarrierRoutes(e *echo.Echo) {
+func (cr *carrierRouter) RegisterCarrierRoutes(e *echo.Echo) {
 	carrier := e.Group("/carrier")
 	controller := cr.carrierController
 	carrier.GET("/all", controller.GetAllCarriersHandler)
