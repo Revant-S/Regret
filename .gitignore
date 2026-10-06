@@ -12,3 +12,5 @@ go.work
 
 sim_storage
 policy_store
+
+*_notes.go

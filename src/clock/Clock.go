@@ -14,13 +14,13 @@ var (
 	once          sync.Once
 )
 
-type ClockInterface interface {
+type Clock interface {
 	UpdateTick(updateTo uint64)
 	StartTick()
 	GetTick() uint64
 }
 
-func GetClockInstance() ClockInterface {
+func GetClockInstance() Clock {
 	once.Do(func() {
 		clockInstance = &clock{
 			tick: 0,

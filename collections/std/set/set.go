@@ -1,4 +1,4 @@
-package impl
+package set
 
 import "cmp"
 
@@ -21,11 +21,6 @@ type Set[T cmp.Ordered] struct {
 	size int
 }
 
-func NewSet[T cmp.Ordered]() *Set[T] {
-	return &Set[T]{
-		size: 0,
-	}
-}
 
 func (s *Set[T]) Size() int {
 	return s.size

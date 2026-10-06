@@ -1,4 +1,4 @@
-package impl
+package stack
 
 type stackNode[T any] struct {
 	value T
