@@ -7,6 +7,10 @@ type node[T any] struct {
 
 // Queue  FIFO Data structure
 // Zero Value is an empty queue
+//
+// it is not concurrency safe
+//
+// None of the methods use locks
 type Queue[T any] struct {
 	head *node[T]
 	tail *node[T]
